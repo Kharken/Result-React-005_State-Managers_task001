@@ -1,9 +1,10 @@
 import { GET_ALL_CONTACTS, GET_CONTACT } from 'src/store/actions';
 import contacts from 'src/__data__/contacts.json';
 import { ContactActionTypes } from 'src/store/types';
+import { ContactDto } from 'src/types/dto/ContactDto';
 
-export const contactsReducer = (
-  state = contacts,
+const contactsReducer = (
+  state: ContactDto[] = contacts,
   action: ContactActionTypes,
 ) => {
   switch (action.type) {
@@ -15,3 +16,5 @@ export const contactsReducer = (
       return state;
   }
 };
+
+export { contactsReducer };
