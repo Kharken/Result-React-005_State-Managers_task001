@@ -19,15 +19,15 @@ export const useFindContacts = (
       );
     }
 
-    // if (fv.groupId) {
-    //   const groupContacts = groupsList.find((id) => id === fv.groupId);
-    //
-    //   if (groupContacts) {
-    //     findContacts = findContacts.filter(({ id }) =>
-    //       groupContacts.contactIds.includes(id),
-    //     );
-    //   }
-    // }
+    if (fv.groupId) {
+      const groupContacts = groupsList.find(({ id }) => id === fv.groupId);
+
+      if (groupContacts) {
+        findContacts = findContacts.filter(({ id }) =>
+          groupContacts.contactIds.includes(id),
+        );
+      }
+    }
 
     setContacts(findContacts);
   };
