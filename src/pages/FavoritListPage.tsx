@@ -1,18 +1,19 @@
-import React, { memo, useEffect, useState } from 'react';
-import { CommonPageProps } from './types';
+import React, { memo } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { ContactCard } from 'src/components/ContactCard';
-import { ContactDto } from 'src/types/dto/ContactDto';
 import { useAppSelector } from 'src/hooks/useAppSelector';
 
-export const FavoritListPage = memo<CommonPageProps>(() => {
+export const FavoritListPage = memo(() => {
   const contactsList = useAppSelector((state) => state.contacts);
+
+  const favoriteContacts =
+    contactsList && contactsList.filter((contact) => contact.isFavorite);
   return (
     <Row
       xxl={4}
       className="g-4"
     >
-      {contactsList.map((contact) => (
+      {favoriteContacts.map((contact) => (
         <Col key={contact.id}>
           <ContactCard
             contactId={contact.id}

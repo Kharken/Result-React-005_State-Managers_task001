@@ -6,7 +6,7 @@ import { GroupContactsDto } from 'src/types/dto/GroupContactsDto';
 
 export const useFindContacts = (
   contactsList: ContactDto[],
-  groupContactsState: State<GroupContactsDto[]>,
+  groupsList: GroupContactsDto[],
 ) => {
   const [contacts, setContacts] = useState<ContactDto[]>(contactsList);
   const onSubmit = (fv: Partial<FilterFormValues>) => {
@@ -19,17 +19,15 @@ export const useFindContacts = (
       );
     }
 
-    if (fv.groupId) {
-      const groupContacts = groupContactsState[0].find(
-        ({ id }) => id === fv.groupId,
-      );
-
-      if (groupContacts) {
-        findContacts = findContacts.filter(({ id }) =>
-          groupContacts.contactIds.includes(id),
-        );
-      }
-    }
+    // if (fv.groupId) {
+    //   const groupContacts = groupsList.find((id) => id === fv.groupId);
+    //
+    //   if (groupContacts) {
+    //     findContacts = findContacts.filter(({ id }) =>
+    //       groupContacts.contactIds.includes(id),
+    //     );
+    //   }
+    // }
 
     setContacts(findContacts);
   };
