@@ -1,20 +1,8 @@
-import { GET_ALL_CONTACTS, GET_CONTACT } from 'src/store/actions';
 import contacts from 'src/__data__/contacts.json';
-import { ContactActionTypes } from 'src/store/types';
 import { ContactDto } from 'src/types/dto/ContactDto';
 
-const contactsReducer = (
-  state: ContactDto[] = contacts,
-  action: ContactActionTypes,
-) => {
-  switch (action.type) {
-    case GET_ALL_CONTACTS:
-      return state;
-    case GET_CONTACT:
-      return state.filter((contact) => contact.id === action.payload.id);
-    default:
-      return state;
-  }
+const contactsReducer = (state: ContactDto[] = contacts) => {
+  return state;
 };
 
 export { contactsReducer };
