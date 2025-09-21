@@ -6,9 +6,10 @@ import { useAppSelector } from 'src/hooks/useAppSelector';
 import { useFindContacts } from 'src/hooks/useFindContacts';
 
 export const ContactListPage = memo(() => {
-  const contactsList = useAppSelector((state) => state.contacts);
-  const groupsList = useAppSelector((state) => state.groups);
+  const contactsList = useAppSelector((state) => state.contacts?.contacts);
+  const groupsList = useAppSelector((state) => state.groups?.groups);
   const { onSubmit, contacts } = useFindContacts(contactsList, groupsList);
+
   return (
     <Row xxl={1}>
       <Col className="mb-3">

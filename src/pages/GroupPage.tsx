@@ -9,8 +9,8 @@ import { useAppSelector } from 'src/hooks/useAppSelector';
 
 export const GroupPage = memo(() => {
   const { groupId } = useParams<{ groupId: string }>();
-  const contactsList = useAppSelector((state) => state.contacts);
-  const groupsList = useAppSelector((state) => state.groups);
+  const contactsList = useAppSelector((state) => state.contacts?.contacts);
+  const groupsList = useAppSelector((state) => state.groups?.groups);
 
   const [findGroup, setFindGroup] = useState<GroupContactsDto | undefined>(
     undefined,

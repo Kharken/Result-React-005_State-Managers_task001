@@ -5,6 +5,10 @@ import { MainApp } from './apps/MainApp';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from 'src/store/store';
+import { getContacts, getGroups } from 'src/store/api-action';
+
+store.dispatch(getContacts());
+store.dispatch(getGroups());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

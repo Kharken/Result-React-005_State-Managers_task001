@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ContactDto } from 'src/types/dto/ContactDto';
 import { FilterFormValues } from 'src/components/FilterForm';
 import { State } from 'src/types/common';
@@ -8,7 +8,10 @@ export const useFindContacts = (
   contactsList: ContactDto[],
   groupsList: GroupContactsDto[],
 ) => {
-  const [contacts, setContacts] = useState<ContactDto[]>(contactsList);
+  const [contacts, setContacts] = useState<ContactDto[]>([]);
+  useEffect(() => {
+    setContacts(contactsList);
+  }, [contactsList]);
   const onSubmit = (fv: Partial<FilterFormValues>) => {
     let findContacts: ContactDto[] = contactsList;
 

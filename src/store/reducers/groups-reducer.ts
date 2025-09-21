@@ -1,10 +1,35 @@
-import groups from 'src/__data__/group-contacts.json';
-import { GroupContactsDto } from 'src/types/dto/GroupContactsDto';
+import { ActionType, GroupsInitialState } from 'src/store/types';
+import {
+  GET_GROUPS_ACTION,
+  GET_GROUPS_SUCCESS_ACTION,
+  RESET_GROUPS_ACTION,
+} from 'src/store/actions';
 
-const initialState: GroupContactsDto[] = groups;
+const initialState: GroupsInitialState = {
+  loading: false,
+  groups: [],
+};
 
-const groupsReducer = (state = initialState) => {
-  return state;
+const groupsReducer = (state = initialState, action: ActionType) => {
+  switch (action.type) {
+    case GET_GROUPS_ACTION:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_GROUPS_SUCCESS_ACTION:
+      return {
+        loading: false,
+        groups: action.payload,
+      };
+    case RESET_GROUPS_ACTION:
+      return {
+        loading: false,
+        groups: [],
+      };
+    default:
+      return state;
+  }
 };
 
 export { groupsReducer };

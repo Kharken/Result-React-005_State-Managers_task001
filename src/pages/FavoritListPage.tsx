@@ -4,7 +4,7 @@ import { ContactCard } from 'src/components/ContactCard';
 import { useAppSelector } from 'src/hooks/useAppSelector';
 
 export const FavoritListPage = memo(() => {
-  const contactsList = useAppSelector((state) => state.contacts);
+  const contactsList = useAppSelector((state) => state.contacts?.contacts);
 
   const favoriteContacts =
     contactsList && contactsList.filter((contact) => contact.isFavorite);

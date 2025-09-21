@@ -14,7 +14,7 @@ interface ContactCardProps {
 export const ContactCard = memo<ContactCardProps>(({ contactId, withLink }) => {
   const dispatch = useAppDispatch();
   const contact: ContactDto | undefined = useAppSelector((state) =>
-    state.contacts.find((contact) => contact.id === contactId),
+    state.contacts.contacts.find((contact) => contact.id === contactId),
   );
   if (!contact) {
     return null;
